@@ -23,10 +23,12 @@ class RecentlyViewed extends Component {
               <Text style={{fontSize: 14, fontWeight: 'bold', color: '#FFFFFF'}}>Recently Viewed</Text>
             </View>
             <View style={{flex: 1, alignItems: 'flex-end'}}>
-              <Text style={{color: 'white', fontSize: 14, fontWeight: '500'}}>Clear</Text>
+              <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <Text style={{color: 'white', fontSize: 14, fontWeight: '500'}}>Clear</Text>
+              </View>
             </View>
           </View>
-         </View>
+        </View>
 
         <ScrollView style={{flex: 1, backgroundColor: '#F7F7F7'}}>
           <View style={{flex: 1}}>

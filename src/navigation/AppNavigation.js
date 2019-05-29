@@ -1,5 +1,9 @@
 import React from 'react';
-import { createBottomTabNavigator, createAppContainer, createStackNavigator, createSwitchNavigator } from 'react-navigation';
+import { 
+  createBottomTabNavigator, createAppContainer, 
+  createStackNavigator, createSwitchNavigator,
+  StackViewTransitionConfigs
+} from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -7,6 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Splash from '../screens/Splash';
 
 import Home from '../screens/Search/Home';
+import MoreOptions from '../screens/Search/Home/MoreOptions';
 import Search from '../screens/Search/Search';
 import RecentlyViewed from '../screens/Search/View';
 import PropertyList from '../screens/Search/List';
@@ -24,13 +29,35 @@ import EditProfile from '../screens/SignIn/EditProfile';
 
 import More from '../screens/More/More';
 
+import Lists from '../screens/common/Lists/Lists';
+import ListDetail from '../screens/common/Lists/ListDetail';
+import CreateList from '../screens/common/Lists/CreateList';
+
+const MODAL_ROUTES = [
+  "MoreOptions",
+  "CreateList"
+];
+let dynamicModalTransition = (
+  transitionProps,
+  prevTransitionProps
+) => {
+  return StackViewTransitionConfigs.defaultTransitionConfig(
+    transitionProps,
+    prevTransitionProps,
+    MODAL_ROUTES.some(
+      screenName => screenName === transitionProps.scene.route.routeName ||
+                   (prevTransitionProps && screenName === prevTransitionProps.scene.route.routeName)
+    )
+  );
+};
+
 const searchScreensWithBottomBarVisible = createStackNavigator(
-  { Home, RecentlyViewed },
-  { initialRouteName: "Home", headerMode: 'none'}
+  { Home, RecentlyViewed, Lists },
+  { initialRouteName: "Home", headerMode: 'none' }
 );
 const SearchStack = createStackNavigator(
-  { searchScreensWithBottomBarVisible, Search, PropertyList, Property },
-  { headerMode: 'none' }
+  { searchScreensWithBottomBarVisible, Search, PropertyList, Property, MoreOptions, CreateList, ListDetail },
+  { headerMode: 'none', transitionConfig: dynamicModalTransition }
 );
 SearchStack.navigationOptions = ({ navigation }) => {
   let tabBarVisible = true;
@@ -46,10 +73,25 @@ const BookingsStack = createStackNavigator(
   { Bookings, ImportBooking },
   { initialRouteName: "Bookings", headerMode: 'none' }
 );
-const SignInStack = createStackNavigator(
-  { Auth, SignIn, SignUp, ResetPassword, Profile, EditProfile },
+
+const signInScreensWithBottomBarVisible = createStackNavigator(
+  { Auth, SignIn, SignUp, ResetPassword, Profile, EditProfile, Lists },
   { initialRouteName: "Profile", headerMode: 'none' }
 );
+const SignInStack = createStackNavigator(
+  { signInScreensWithBottomBarVisible, CreateList },
+  { headerMode: 'none', transitionConfig: dynamicModalTransition }
+);
+SignInStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+  return {
+    tabBarVisible
+  }
+}
+
 const MoreStack = createStackNavigator(
   { More },
   { initialRouteName: "More", headerMode: 'none' }

@@ -66,22 +66,24 @@ class Profile extends Component {
                   <Ionicons name="ios-arrow-forward" color='#9DA3C4' size={18} />
                 </View>
               </View>
-              <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 10, borderBottomWidth: 2, borderBottomColor: '#F7F7F7'}}>
-                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                  <View style={{marginRight: 10}}>
-                    <Ionicons name="ios-heart-empty" size={18} />
-                  </View>
-                  <Text style={{fontSize: 14, fontWeight: '300'}}>Lists</Text>
-                </View>
-                <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-                  <View style={{flexDirection: 'row'}}>
-                    <View style={{backgroundColor: '#F7F7F7', width: 20, height: 20, borderRadius: 5, justifyContent: 'center', alignItems: 'center', marginRight: 10}}>
-                      <Text style={{fontSize: 12, fontWeight: '300'}}>3</Text>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Lists')}>
+                <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 10, borderBottomWidth: 2, borderBottomColor: '#F7F7F7'}}>
+                  <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                    <View style={{marginRight: 10}}>
+                      <Ionicons name="ios-heart-empty" size={18} />
                     </View>
-                    <Ionicons name="ios-arrow-forward" color='#9DA3C4' size={18} />
+                    <Text style={{fontSize: 14, fontWeight: '300'}}>Lists</Text>
+                  </View>
+                  <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
+                    <View style={{flexDirection: 'row'}}>
+                      <View style={{backgroundColor: '#F7F7F7', width: 20, height: 20, borderRadius: 5, justifyContent: 'center', alignItems: 'center', marginRight: 10}}>
+                        <Text style={{fontSize: 12, fontWeight: '300'}}>3</Text>
+                      </View>
+                      <Ionicons name="ios-arrow-forward" color='#9DA3C4' size={18} />
+                    </View>
                   </View>
                 </View>
-              </View>
+              </TouchableOpacity>
               <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 10}}>
                 <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                   <View style={{marginRight: 10}}>

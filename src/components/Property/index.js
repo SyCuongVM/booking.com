@@ -68,7 +68,7 @@ class Property extends Component {
               </View>
               {rating &&
                 <View style={{flexDirection: 'row', marginVertical: 5}}>
-                  <View style={{backgroundColor: '#003580', borderTopLeftRadius: 5, borderTopRightRadius: 5, borderBottomRightRadius: 5, marginRight: 4, width: 20, height: 20, justifyContent: 'center', alignItems: 'center'}}>
+                  <View style={{backgroundColor: '#003580', borderTopLeftRadius: 5, borderTopRightRadius: 5, borderBottomRightRadius: 5, marginRight: 4, width: 24, height: 24, justifyContent: 'center', alignItems: 'center'}}>
                     <Text style={{fontSize: 12, fontWeight: '200', color: '#FFFFFF', padding: 4}}>{rating.point}</Text>
                   </View>
                   <Text style={{fontSize: 12, fontWeight: '200'}}>{rating.remark}</Text>

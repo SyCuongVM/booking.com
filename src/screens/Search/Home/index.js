@@ -64,7 +64,6 @@ class Home extends Component {
                 <View style={{flexDirection: 'row', padding: 10, backgroundColor: '#FFFFFF', height: 45, marginBottom: 5, borderRadius: 3, justifyContent: 'center', alignContent: 'center', alignItems: 'center'}}>
                   <Ionicons name="ios-search" size={18} />
                   <TextInput 
-                    // editable={false}
                     underlineColorAndroid="transparent"
                     placeholder="Enter destination"
                     placeholderTextColor="black"
@@ -75,7 +74,6 @@ class Home extends Component {
                 <View style={{flexDirection: 'row', padding: 10, backgroundColor: '#FFFFFF', height: 45, marginBottom: 5, borderRadius: 3, justifyContent: 'center', alignContent: 'center', alignItems: 'center'}}>
                   <Fontawesome name="calendar" size={18} />
                   <TextInput 
-                    editable={false}
                     underlineColorAndroid="transparent"
                     placeholder="Sat, May 18 - Sat, Jun 8"
                     placeholderTextColor="black"
@@ -85,11 +83,11 @@ class Home extends Component {
                 <View style={{flexDirection: 'row', padding: 10, backgroundColor: '#FFFFFF', height: 45, marginBottom: 5, borderRadius: 3, justifyContent: 'center', alignContent: 'center', alignItems: 'center'}}>
                   <Fontawesome name="user" size={18} />
                   <TextInput 
-                    editable={false}
                     underlineColorAndroid="transparent"
                     placeholder="1 room . 2 adults . 0 children"
                     placeholderTextColor="black"
                     style={{flex: 1, fontSize: 14, fontWeight: '300', backgroundColor: 'white', paddingLeft: 10}}
+                    onFocus={() => this.props.navigation.navigate('MoreOptions')}
                   />
                 </View>
               </View>
@@ -127,7 +125,7 @@ class Home extends Component {
             </View>
 
             <View style={{backgroundColor: '#FFFFFF', paddingHorizontal: 15, paddingVertical: 10, marginBottom: 5}}>
-              <TouchableOpacity style={{flexDirection: 'row'}}>
+              <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => navigation.navigate('Lists')}>
                 <View style={{flex: 2}}>
                   <Text style={{fontSize: 14, fontWeight: '400'}}>Lists</Text>
                 </View>

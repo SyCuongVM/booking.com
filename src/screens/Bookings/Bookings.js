@@ -58,7 +58,7 @@ class Bookings extends Component {
             ) : (
               <View>
                 <View style={{paddingBottom: 30, justifyContent: 'center', alignItems: 'center', alignContent: 'center'}}>
-                  <Text style={{fontSize: 20, fontWeight: 'bold', paddingBottom: 10}}>Welcome back!</Text>
+                  <Text style={{fontSize: 18, fontWeight: 'bold', paddingBottom: 10}}>Welcome back!</Text>
                   <Text style={{fontSize: 14, fontWeight: '100', textAlign: 'center'}}>To see your bookings, you might need to import them using your booking reference number and PIN or by signing in to your account.</Text>
                 </View>
                 <View style={{justifyContent: 'center', alignItems: 'center', alignContent: 'center'}}>

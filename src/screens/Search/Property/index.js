@@ -72,7 +72,7 @@ class Property extends Component {
               <Ionicons name="ios-heart-empty" color='#FFFFFF' size={20} />
             </View>
             <View style={{flex: 0.7, alignItems: 'flex-end'}}>
-              <FontAwesome name="share-square-o" color='#FFFFFF' size={20} />
+              <Ionicons name="md-open" color='#FFFFFF' size={22} />
             </View>
           </View>
         </View>
