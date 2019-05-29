@@ -13,6 +13,16 @@ class Property extends Component {
       measurements: {},
     }
   }
+  renderRating(rating) {
+    const stars = new Array(rating).fill(0);
+    return (
+      stars.map((_, index) => {
+        return (
+          <Ionicons name="ios-star" key={`star-${index}`} size={10} color='#FEBA02' />
+        )
+      })
+    )
+  }
 
   render() {
     const { 
@@ -46,7 +56,8 @@ class Property extends Component {
                 <Text style={{fontSize: 14, fontWeight: 'bold'}}>{name}</Text>
                 {stars && 
                   <View style={{marginHorizontal: 4}}>
-                    <StarRating disabled maxStars={stars} rating={stars} starSize={12} fullStarColor='#FEBA02' />
+                    {/* <StarRating disabled maxStars={stars} rating={stars} starSize={12} fullStarColor='#FEBA02' /> */}
+                    {this.renderRating(stars)}
                   </View>
                 }
                 {thumbUp && 

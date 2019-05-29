@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Dimensions, TouchableOpacity, Switch } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { TextInput } from 'react-native-paper';
+import { TextField } from 'react-native-material-textfield';
 
 import { getData, removeData } from '../../util/localStorage';
 
@@ -45,20 +45,32 @@ class EditProfile extends Component {
                 <Text style={{fontSize: 14, fontWeight: 'bold', color: '#808FA4'}}>NAME</Text>
               </View>
               <View style={{backgroundColor: '#FFFFFF'}}>
-                <TextInput 
-                  style={{backgroundColor: '#FFFFFF'}}
-                  autoCorrect={false}
-                  label="First Name" 
+                <TextField 
                   value={user.firstname}
-                  underlineColor='transparent'
+                  style={{paddingHorizontal: 10, fontSize: 14, fontWeight: '400'}}
+                  autoCorrect={false}
+                  fontSize={14}
+                  label="First Name"
+                  labelFontSize={14}
+                  labelPadding={5}
+                  labelTextStyle={{marginLeft: 10}}
+                  lineWidth={0}
+                  activeLineWidth={0}
+                  disabledLineWidth={0}
                 />
                 <View style={{marginLeft: 10, height: 0.5, backgroundColor: '#808FA4', width: width - 10, alignItems: 'flex-end'}} />
-                <TextInput 
-                  style={{backgroundColor: '#FFFFFF'}}
+                <TextField 
+                  value={user.lastname}
+                  style={{paddingHorizontal: 10, fontSize: 14, fontWeight: '400'}}
                   autoCorrect={false}
+                  fontSize={14}
                   label="Last Name"
-                  value={user.lastname} 
-                  underlineColor='transparent'
+                  labelFontSize={14}
+                  labelPadding={5}
+                  labelTextStyle={{marginLeft: 10}}
+                  lineWidth={0}
+                  activeLineWidth={0}
+                  disabledLineWidth={0}
                 />
               </View>
             </View>
@@ -68,11 +80,18 @@ class EditProfile extends Component {
                 <Text style={{fontSize: 14, fontWeight: 'bold', color: '#808FA4'}}>EMAIL ADDRESSES</Text>
               </View>
               <View style={{backgroundColor: '#FFFFFF'}}>
-                <TextInput 
-                  style={{backgroundColor: '#FFFFFF'}}
+                <TextField 
+                  value={user.email}
+                  style={{paddingHorizontal: 10, fontSize: 14, fontWeight: '400'}}
                   autoCorrect={false}
-                  value={user.email} 
-                  underlineColor='transparent'
+                  fontSize={14}
+                  label="First Name"
+                  labelFontSize={14}
+                  labelPadding={5}
+                  labelTextStyle={{marginLeft: 10}}
+                  lineWidth={0}
+                  activeLineWidth={0}
+                  disabledLineWidth={0}
                 />
               </View>
             </View>
@@ -82,32 +101,56 @@ class EditProfile extends Component {
                 <Text style={{fontSize: 14, fontWeight: 'bold', color: '#808FA4'}}>DETAILS</Text>
               </View>
               <View style={{backgroundColor: '#FFFFFF'}}>
-                <TextInput 
-                  style={{backgroundColor: '#FFFFFF'}}
+                <TextField 
+                  style={{paddingHorizontal: 10, fontSize: 14, fontWeight: '400'}}
                   autoCorrect={false}
-                  label="Mobile Number" 
-                  underlineColor='transparent'
+                  fontSize={14}
+                  label="Mobile Number"
+                  labelFontSize={14}
+                  labelPadding={5}
+                  labelTextStyle={{marginLeft: 10}}
+                  lineWidth={0}
+                  activeLineWidth={0}
+                  disabledLineWidth={0}
                 />
                 <View style={{marginLeft: 10, height: 0.5, backgroundColor: '#808FA4', width: width - 10, alignItems: 'flex-end'}} />
-                <TextInput 
-                  style={{backgroundColor: '#FFFFFF'}}
+                <TextField 
+                  style={{paddingHorizontal: 10, fontSize: 14, fontWeight: '400'}}
                   autoCorrect={false}
-                  label="Date of Birth" 
-                  underlineColor='transparent'
+                  fontSize={14}
+                  label="Date of Birth"
+                  labelFontSize={14}
+                  labelPadding={5}
+                  labelTextStyle={{marginLeft: 10}}
+                  lineWidth={0}
+                  activeLineWidth={0}
+                  disabledLineWidth={0}
                 />
                 <View style={{marginLeft: 10, height: 0.5, backgroundColor: '#808FA4', width: width - 10, alignItems: 'flex-end'}} />
-                <TextInput 
-                  style={{backgroundColor: '#FFFFFF'}}
+                <TextField 
+                  style={{paddingHorizontal: 10, fontSize: 14, fontWeight: '400'}}
                   autoCorrect={false}
-                  label="Gender" 
-                  underlineColor='transparent'
+                  fontSize={14}
+                  label="Gender"
+                  labelFontSize={14}
+                  labelPadding={5}
+                  labelTextStyle={{marginLeft: 10}}
+                  lineWidth={0}
+                  activeLineWidth={0}
+                  disabledLineWidth={0}
                 />
                 <View style={{marginLeft: 10, height: 0.5, backgroundColor: '#808FA4', width: width - 10, alignItems: 'flex-end'}} />
-                <TextInput 
-                  style={{backgroundColor: '#FFFFFF'}}
+                <TextField 
+                  style={{paddingHorizontal: 10, fontSize: 14, fontWeight: '400'}}
                   autoCorrect={false}
-                  label="Smoking preference" 
-                  underlineColor='transparent'
+                  fontSize={14}
+                  label="Smoking preference"
+                  labelFontSize={14}
+                  labelPadding={5}
+                  labelTextStyle={{marginLeft: 10}}
+                  lineWidth={0}
+                  activeLineWidth={0}
+                  disabledLineWidth={0}
                 />
               </View>
             </View>
@@ -117,32 +160,56 @@ class EditProfile extends Component {
                 <Text style={{fontSize: 14, fontWeight: 'bold', color: '#808FA4'}}>ADDRESS</Text>
               </View>
               <View style={{backgroundColor: '#FFFFFF'}}>
-                <TextInput 
-                  style={{backgroundColor: '#FFFFFF'}}
+                <TextField 
+                  style={{paddingHorizontal: 10, fontSize: 14, fontWeight: '400'}}
                   autoCorrect={false}
-                  label="Country/Region" 
-                  underlineColor='transparent'
+                  fontSize={14}
+                  label="Country/Region"
+                  labelFontSize={14}
+                  labelPadding={5}
+                  labelTextStyle={{marginLeft: 10}}
+                  lineWidth={0}
+                  activeLineWidth={0}
+                  disabledLineWidth={0}
                 />
                 <View style={{marginLeft: 10, height: 0.5, backgroundColor: '#808FA4', width: width - 10, alignItems: 'flex-end'}} />
-                <TextInput 
-                  style={{backgroundColor: '#FFFFFF'}}
+                <TextField 
+                  style={{paddingHorizontal: 10, fontSize: 14, fontWeight: '400'}}
                   autoCorrect={false}
-                  label="City" 
-                  underlineColor='transparent'
+                  fontSize={14}
+                  label="City"
+                  labelFontSize={14}
+                  labelPadding={5}
+                  labelTextStyle={{marginLeft: 10}}
+                  lineWidth={0}
+                  activeLineWidth={0}
+                  disabledLineWidth={0}
                 />
                 <View style={{marginLeft: 10, height: 0.5, backgroundColor: '#808FA4', width: width - 10, alignItems: 'flex-end'}} />
-                <TextInput 
-                  style={{backgroundColor: '#FFFFFF'}}
+                <TextField 
+                  style={{paddingHorizontal: 10, fontSize: 14, fontWeight: '400'}}
                   autoCorrect={false}
-                  label="Street Address" 
-                  underlineColor='transparent'
+                  fontSize={14}
+                  label="Street Address"
+                  labelFontSize={14}
+                  labelPadding={5}
+                  labelTextStyle={{marginLeft: 10}}
+                  lineWidth={0}
+                  activeLineWidth={0}
+                  disabledLineWidth={0}
                 />
                 <View style={{marginLeft: 10, height: 0.5, backgroundColor: '#808FA4', width: width - 10, alignItems: 'flex-end'}} />
-                <TextInput 
-                  style={{backgroundColor: '#FFFFFF'}}
+                <TextField 
+                  style={{paddingHorizontal: 10, fontSize: 14, fontWeight: '400'}}
                   autoCorrect={false}
-                  label="Zip Code" 
-                  underlineColor='transparent'
+                  fontSize={14}
+                  label="Zip Code"
+                  labelFontSize={14}
+                  labelPadding={5}
+                  labelTextStyle={{marginLeft: 10}}
+                  lineWidth={0}
+                  activeLineWidth={0}
+                  disabledLineWidth={0}
                 />
               </View>
             </View>
