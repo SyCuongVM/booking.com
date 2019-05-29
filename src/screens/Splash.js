@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-class Loading extends Component {
+class Splash extends Component {
   componentDidMount() {
     setTimeout(() => { 
       this.props.navigation.navigate('Home');
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Loading;
+export default Splash;

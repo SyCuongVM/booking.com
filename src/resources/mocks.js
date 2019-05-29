@@ -179,7 +179,11 @@ const propertyList = [
         country: "United Kingdom"
       },
     ],
-    description: "The cheer to carnal night in superstition to and. And with the wins to. Misery save start would old, unto. Li knabon vi gxi posedajxoj da pri estis ne, levis nun du ekiris mi dek. Da kelke kiom velveturis marbordo,. Luna apariencia de dando se larga recodos transparente los de. Y quedo de que el perfil. La brooklyn de de."
+    description: "The cheer to carnal night in superstition to and. And with the wins to. Misery save start would old, unto. Li knabon vi gxi posedajxoj da pri estis ne, levis nun du ekiris mi dek. Da kelke kiom velveturis marbordo,. Luna apariencia de dando se larga recodos transparente los de. Y quedo de que el perfil. La brooklyn de de.",
+    region: {
+      LATITUDE: 34.06422,
+      LONGITUDE: -118.413895
+    }
   },
   {
     id: 2,
@@ -263,7 +267,11 @@ const propertyList = [
         country: "United Kingdom"
       },
     ],
-    description: "Nor though love harold adversity which and long, go go now within of ee. None for had love he this. Est sit takimata accusam labore kasd, at sed sed diam dolore. Consetetur sit gubergren dolores consetetur sea dolor ea dolor aliquyam. Labore amet takimata dolores ipsum. Vero sanctus takimata et et gubergren no. Dolore est invidunt amet stet labore, clita dolores dolores amet dolore ea ipsum. No elitr et labore."
+    description: "Nor though love harold adversity which and long, go go now within of ee. None for had love he this. Est sit takimata accusam labore kasd, at sed sed diam dolore. Consetetur sit gubergren dolores consetetur sea dolor ea dolor aliquyam. Labore amet takimata dolores ipsum. Vero sanctus takimata et et gubergren no. Dolore est invidunt amet stet labore, clita dolores dolores amet dolore ea ipsum. No elitr et labore.",
+    region: {
+      LATITUDE: 34.071542,
+      LONGITUDE: -118.402543
+    }
   },
   {
     id: 3,
@@ -353,7 +361,11 @@ const propertyList = [
         description: "Lorem sadipscing ut elitr accusam justo invidunt ut. Et clita.",
         display: "Garden"
       },
-    ]
+    ],
+    region: {
+      LATITUDE: 34.081113,
+      LONGITUDE: -118.390139
+    }
   },
   {
     id: 4,
@@ -412,7 +424,11 @@ const propertyList = [
         country: "United Kingdom"
       },
     ],
-    description: "Alatt ezért hegyét nagyon fejem egymást kerüljetek ártatlanok s laktok ha. De óvjon nagyon teher szeret, legutolsó gyalázat és az. Is fluttered it murmured madam nepenthe what had door soul rapping. I long this sorrow he, to for his that decorum this on quaff. Nearly beguiling soul a velvet an,."
+    description: "Alatt ezért hegyét nagyon fejem egymást kerüljetek ártatlanok s laktok ha. De óvjon nagyon teher szeret, legutolsó gyalázat és az. Is fluttered it murmured madam nepenthe what had door soul rapping. I long this sorrow he, to for his that decorum this on quaff. Nearly beguiling soul a velvet an,.",
+    region: {
+      LATITUDE: 34.089471,
+      LONGITUDE: -118.394752
+    }
   },
   {
     id: 5,
@@ -468,8 +484,12 @@ const propertyList = [
         country: "United Kingdom"
       },
     ],
-    description: "The the dreary a you angels of have, from sad ungainly weak kind door and the. Ah and separate shadow. Maries bercé bords je flamands sanglot fermenter mais mers voulais . Noirs mystiques béni enlever ivre des cinquante puis. Drames de les m'ont lames éternels. Qu'un de les tout descendaient descendre grappin des baigné léger. Poetes des immobilités mer pensif."
-  },
+    description: "The the dreary a you angels of have, from sad ungainly weak kind door and the. Ah and separate shadow. Maries bercé bords je flamands sanglot fermenter mais mers voulais . Noirs mystiques béni enlever ivre des cinquante puis. Drames de les m'ont lames éternels. Qu'un de les tout descendaient descendre grappin des baigné léger. Poetes des immobilités mer pensif.",
+    region: {
+      LATITUDE: 37.78825,
+      LONGITUDE: -122.4324
+    }
+  }
 ]
 
 export {

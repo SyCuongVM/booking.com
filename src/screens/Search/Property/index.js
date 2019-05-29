@@ -1,16 +1,44 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Dimensions, Image } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Dimensions, Image, StyleSheet } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import StarRating from 'react-native-star-rating';
 import ReadMore from 'react-native-read-more-text';
+import MapView, { Marker } from 'react-native-maps';
 //Entypo, EvilIcons, Feather, Foundation, MaterialIcons, MaterialCommunityIcons, Octicons, Zocial
 //Math.floor(Math.random()*(max-min+1)+min)
 
-const { width } = Dimensions.get('window');
 const countries = require('../../../resources/countries.json')
+const { width, height } = Dimensions.get('window');
+
+const ASPECT_RATIO = width / height;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+const SPACE = 0.01;
+const SPACE2 = 0.1;
 
 class Property extends Component {
+  // componentDidMount() {
+  //   const coordinate = (this.props.navigation.getParam('property').region);
+  //   const MARKERS = [
+  //     {
+  //       latitude: coordinate.LATITUDE + SPACE,
+  //       longitude: coordinate.LONGITUDE + SPACE
+  //     }
+  //   ];
+  //   this.map.fitToCoordinates([MARKERS[0]], {
+  //     edgePadding: { top: 40, bottom: 40, left: 40, right: 40 }
+  //   });
+  // }
+  renderRating(rating) {
+    const stars = new Array(rating).fill(0);
+    return (
+      stars.map((_, index) => {
+        return (
+          <Ionicons name="ios-star" key={`star-${index}`} size={20} color='#FEBA02' />
+        )
+      })
+    )
+  }
   renderReadMore = onPress => {
     return (
       <Text onPress={onPress} style={{fontSize: 12, fontWeight: '500', color: '#3376C6', marginTop: 15}}>Read more</Text>
@@ -82,19 +110,21 @@ class Property extends Component {
               </View>
             }
             
-            <View style={{flexDirection: 'row', backgroundColor: '#FFFFFF', padding: 15, justifyContent: 'center', alignItems: 'center', marginBottom: 10}}>
+            <View style={{flexDirection: 'row', backgroundColor: '#FFFFFF', paddingHorizontal: 15, paddingVertical: 10, justifyContent: 'center', alignItems: 'center', marginBottom: 10}}>
               <View style={{flex: 4, flexDirection: 'row', flexWrap: 'wrap'}}>
-                <Text style={{fontSize: 18, fontWeight: 'bold'}}>{property.name}</Text>
-                {property.stars && 
-                  <View style={{marginHorizontal: 5}}>
-                    <StarRating disabled maxStars={property.stars} rating={property.stars} starSize={20} fullStarColor='#FEBA02' />
-                  </View>
-                }
-                {property.thumbUp && 
-                  <View style={{backgroundColor: '#FEBA02', borderRadius: 2, width: 18, height: 18, justifyContent: 'center', alignItems: 'center'}}>
-                    <FontAwesome name="thumbs-up" color='#FFFFFF' size={13} />
-                  </View>
-                }
+                <Text style={{fontSize: 18, fontWeight: 'bold', flexWrap: 'wrap'}}>{property.name}</Text>
+                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                  {property.stars && 
+                    <View style={{flexDirection: 'row', marginHorizontal: 5}}>
+                      {this.renderRating(property.stars)}
+                    </View>
+                  }
+                  {property.thumbUp && 
+                    <View style={{backgroundColor: '#FEBA02', borderRadius: 2, width: 18, height: 18, justifyContent: 'center', alignItems: 'center'}}>
+                      <FontAwesome name="thumbs-up" color='#FFFFFF' size={13} />
+                    </View>
+                  }
+                </View>
               </View>
               {property.rating &&
                 <View>
@@ -173,7 +203,30 @@ class Property extends Component {
             }
 
             <View style={{backgroundColor: '#FFFFFF', marginBottom: 10}}>
-              <View style={{width: width, height: width - 250}}></View>
+              <View style={{width: width, height: width - 250}}>
+                <MapView
+                  ref={ref => { this.map = ref }}
+                  style={{...StyleSheet.absoluteFillObject}}
+                  initialRegion={{
+                    latitude: property.region.LATITUDE,
+                    longitude: property.region.LONGITUDE,
+                    latitudeDelta: LATITUDE_DELTA,
+                    longitudeDelta: LONGITUDE_DELTA
+                  }}
+                  onLayout={() => this.map.fitToElements(false)}
+                  // onLayout={() => this.map.fitToSuppliedMarkers(["Marker1"], false)}
+                >
+                  <Marker
+                    identifier="Marker1"
+                    coordinate={{
+                      latitude: property.region.LATITUDE + SPACE,
+                      longitude: property.region.LONGITUDE + SPACE,
+                    }}
+                  >
+                    <Ionicons name="ios-pin" size={40} color="#009FE3" /> 
+                  </Marker>
+                </MapView>
+              </View>
               <View style={{padding: 15}}>
                 <View style={{flexDirection: 'row', marginBottom: 10}}>
                   <Ionicons name="ios-pin" size={20} /> 
@@ -197,12 +250,12 @@ class Property extends Component {
             <View style={{flexDirection: 'row', backgroundColor: '#FFFFFF', padding: 15, justifyContent: 'center', alignItems: 'flex-end', marginBottom: 10, }}>
               <View style={{flex: 1}}>
                 <Text style={{fontSize: 14, fontWeight: 'bold', marginBottom: 15}}>Check-in</Text>
-                <Text style={{fontSize: 16, fontWeight: '500', color: '#3376C6'}}>Thu, Sep 12 </Text>
+                <Text style={{fontSize: 16, fontWeight: '500', color: '#009FE3'}}>Thu, Sep 12 </Text>
               </View>
               <View style={{width: 1, height: 25, marginHorizontal: 15, backgroundColor: '#ECECEC'}} />
               <View style={{flex: 1}}>
                 <Text style={{fontSize: 14, fontWeight: 'bold', marginBottom: 15}}>Check-out</Text>
-                <Text style={{fontSize: 16, fontWeight: '500', color: '#3376C6'}}>Sat, Sep 14 </Text>
+                <Text style={{fontSize: 16, fontWeight: '500', color: '#009FE3'}}>Sat, Sep 14 </Text>
               </View>
             </View>
 
@@ -261,7 +314,7 @@ class Property extends Component {
                   ))}
                 </View>
                 <View>
-                  <Text style={{fontSize: 14, fontWeight: '500', color: '#3376C6'}}>See all 402 reviews</Text>
+                  <Text style={{fontSize: 14, fontWeight: '500', color: '#009FE3'}}>See all 402 reviews</Text>
                 </View>
               </View>
             }
@@ -347,8 +400,8 @@ class Property extends Component {
                   </View>
                 </View>
                 <View style={{flexDirection: 'row'}}>
-                  <Text style={{fontSize: 14, fontWeight: '500', color: '#3376C6', marginLeft: 34, marginRight: 20}}>Yes</Text>
-                  <Text style={{fontSize: 14, fontWeight: '500', color: '#3376C6'}}>No</Text>
+                  <Text style={{fontSize: 14, fontWeight: '500', color: '#009FE3', marginLeft: 34, marginRight: 20}}>Yes</Text>
+                  <Text style={{fontSize: 14, fontWeight: '500', color: '#009FE3'}}>No</Text>
                 </View>
               </View>
             }

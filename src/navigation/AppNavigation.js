@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import Loading from '../screens/Loading';
+import Splash from '../screens/Splash';
 
 import Home from '../screens/Search/Home';
 import Search from '../screens/Search/Search';
@@ -111,6 +111,6 @@ const bottomTabNavigator = createBottomTabNavigator(
 );
 
 export default createAppContainer(createSwitchNavigator(
-  { Loading, bottomTabNavigator },
-  { initialRouteName: 'Loading' }
+  { Splash, bottomTabNavigator },
+  { initialRouteName: 'Splash' }
 ));

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, Image, Dimensions } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import StarRating from 'react-native-star-rating';
 
 const { width } = Dimensions.get('window');
 
@@ -54,17 +53,18 @@ class Property extends Component {
             <View style={{flex: 5, marginHorizontal: 4}}>
               <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
                 <Text style={{fontSize: 14, fontWeight: 'bold'}}>{name}</Text>
-                {stars && 
-                  <View style={{marginHorizontal: 4}}>
-                    {/* <StarRating disabled maxStars={stars} rating={stars} starSize={12} fullStarColor='#FEBA02' /> */}
-                    {this.renderRating(stars)}
-                  </View>
-                }
-                {thumbUp && 
-                  <View style={{backgroundColor: '#FEBA02', borderRadius: 2, width: 15, height: 15, justifyContent: 'center', alignItems: 'center'}}>
-                    <FontAwesome name="thumbs-up" color='#FFFFFF' size={10} />
-                  </View>
-                }
+                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                  {stars && 
+                    <View style={{flexDirection: 'row', marginHorizontal: 4}}>
+                      {this.renderRating(stars)}
+                    </View>
+                  }
+                  {thumbUp && 
+                    <View style={{backgroundColor: '#FEBA02', borderRadius: 2, width: 15, height: 15, justifyContent: 'center', alignItems: 'center'}}>
+                      <FontAwesome name="thumbs-up" color='#FFFFFF' size={10} />
+                    </View>
+                  }
+                </View>
               </View>
               {rating &&
                 <View style={{flexDirection: 'row', marginVertical: 5}}>
