@@ -17,6 +17,7 @@ class Profile extends Component {
 
   render() {
     const { user } = this.state;
+    const { navigation } = this.props;
 
     return (
       <View style={{flex: 1}}>
@@ -44,29 +45,36 @@ class Profile extends Component {
             </View>
 
             <View style={{backgroundColor: '#FFFFFF'}}>
-              <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 10, borderBottomWidth: 2, borderBottomColor: '#F7F7F7'}}>
-                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                  <View style={{marginRight: 10}}>
-                    <Ionicons name="ios-checkbox-outline" size={18} />
+
+              <TouchableOpacity onPress={() => navigation.navigate('Bookings')}> 
+                <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 10, borderBottomWidth: 2, borderBottomColor: '#F7F7F7'}}>
+                  <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                    <View style={{marginRight: 10}}>
+                      <Ionicons name="ios-checkbox-outline" size={18} />
+                    </View>
+                    <Text style={{fontSize: 14, fontWeight: '300'}}>Trips</Text>
                   </View>
-                  <Text style={{fontSize: 14, fontWeight: '300'}}>Trips</Text>
-                </View>
-                <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-                  <Ionicons name="ios-arrow-forward" color='#9DA3C4' size={18} />
-                </View>
-              </View>
-              <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 10, borderBottomWidth: 2, borderBottomColor: '#F7F7F7'}}>
-                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                  <View style={{marginRight: 10}}>
-                    <Ionicons name="ios-contacts" size={18} />
+                  <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
+                    <Ionicons name="ios-arrow-forward" color='#9DA3C4' size={18} />
                   </View>
-                  <Text style={{fontSize: 14, fontWeight: '300'}}>Reviews</Text>
                 </View>
-                <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-                  <Ionicons name="ios-arrow-forward" color='#9DA3C4' size={18} />
+              </TouchableOpacity>
+
+              <TouchableOpacity>
+                <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 10, borderBottomWidth: 2, borderBottomColor: '#F7F7F7'}}>
+                  <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                    <View style={{marginRight: 10}}>
+                      <Ionicons name="ios-contacts" size={18} />
+                    </View>
+                    <Text style={{fontSize: 14, fontWeight: '300'}}>Reviews</Text>
+                  </View>
+                  <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
+                    <Ionicons name="ios-arrow-forward" color='#9DA3C4' size={18} />
+                  </View>
                 </View>
-              </View>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('Lists')}>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={() => navigation.navigate('Lists')}>
                 <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 10, borderBottomWidth: 2, borderBottomColor: '#F7F7F7'}}>
                   <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                     <View style={{marginRight: 10}}>
@@ -84,17 +92,21 @@ class Profile extends Component {
                   </View>
                 </View>
               </TouchableOpacity>
-              <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 10}}>
-                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                  <View style={{marginRight: 10}}>
-                    <Ionicons name="ios-search" size={18} />
+
+              <TouchableOpacity onPress={() => navigation.navigate('RecentSearches')}>
+                <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 10}}>
+                  <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                    <View style={{marginRight: 10}}>
+                      <Ionicons name="ios-search" size={18} />
+                    </View>
+                    <Text style={{fontSize: 14, fontWeight: '300'}}>Recent searches</Text>
                   </View>
-                  <Text style={{fontSize: 14, fontWeight: '300'}}>Recent searches</Text>
+                  <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
+                    <Ionicons name="ios-arrow-forward" color='#9DA3C4' size={18} />
+                  </View>
                 </View>
-                <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-                  <Ionicons name="ios-arrow-forward" color='#9DA3C4' size={18} />
-                </View>
-              </View>
+              </TouchableOpacity>
+
             </View>
 
           </View>

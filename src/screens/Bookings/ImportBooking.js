@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Dimensions, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { TextField } from 'react-native-material-textfield';
 
 const { width } = Dimensions.get('window');
 class ImportBooking extends Component {
@@ -20,40 +21,47 @@ class ImportBooking extends Component {
         
         <ScrollView style={{flex: 1, backgroundColor: '#F7F7F7'}}>
           <View style={{flex: 1}}>
-            <View style={{paddingHorizontal: 20, paddingVertical: 30, justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={{fontSize: 14, fontWeight: '400', textAlign: 'center'}}>Import a booking you made on a different device</Text>
+            <View style={{paddingHorizontal: 20, paddingVertical: 20, justifyContent: 'center', alignItems: 'center'}}>
+              <Text style={{fontSize: 12, fontWeight: '400', textAlign: 'center'}}>Import a booking you made on a different device</Text>
             </View>
 
             <View style={{width: width, backgroundColor: '#FFFFFF'}}>
-              <View style={{height: 50, justifyContent: 'center', alignContent: 'center', alignItems: 'flex-start', paddingHorizontal: 15}}>
-                <TextInput 
-                  autoFocus
+              <View>
+                <TextField 
+                  style={{paddingHorizontal: 15, fontSize: 14, fontWeight: '400'}}
                   autoCorrect={false}
-                  autoCapitalize="none"
-                  underlineColorAndroid="transparent"
-                  placeholder="Confrimation number"
-                  placeholderTextColor="gray"
-                  style={{fontSize: 14, fontWeight: '200'}}
+                  fontSize={14}
+                  label="Confrimation number"
+                  labelFontSize={14}
+                  labelPadding={5}
+                  labelTextStyle={{marginLeft: 20}}
+                  lineWidth={0}
+                  activeLineWidth={0}
+                  disabledLineWidth={0}
                 />
               </View>
               <View style={{width: width - 30, height: 0.3, marginHorizontal: 15, backgroundColor: 'gray',}} />
-              <View style={{height: 50, justifyContent: 'center', alignContent: 'center', alignItems: 'flex-start', paddingHorizontal: 15}}>
-                <TextInput 
+              <View>
+                <TextField 
                   secureTextEntry
+                  style={{paddingHorizontal: 15, fontSize: 14, fontWeight: '400'}}
                   autoCorrect={false}
-                  autoCapitalize="none"
-                  underlineColorAndroid="transparent"
-                  placeholder="PIN code"
-                  placeholderTextColor="gray"
-                  style={{fontSize: 14, fontWeight: '200'}}
+                  fontSize={14}
+                  label="PIN code"
+                  labelFontSize={14}
+                  labelPadding={5}
+                  labelTextStyle={{marginLeft: 20}}
+                  lineWidth={0}
+                  activeLineWidth={0}
+                  disabledLineWidth={0}
                 />
               </View>
             </View>
 
             <View style={{justifyContent: 'center', alignItems: 'center', paddingHorizontal: 15}}>
               <View style={{paddingVertical: 20}}>
-                <TouchableOpacity style={{width: width - 30, height: 40, backgroundColor: '#009FE3', justifyContent: 'center', alignItems: 'center', borderRadius: 3}}>
-                  <Text style={{fontSize: 18, color: '#FFFFFF'}}>Import</Text>
+                <TouchableOpacity style={{width: width - 30, height: 30, backgroundColor: '#009FE3', justifyContent: 'center', alignItems: 'center', borderRadius: 3}}>
+                  <Text style={{fontSize: 14, color: '#FFFFFF', fontWeight: '500'}}>Import</Text>
                 </TouchableOpacity>
               </View>
             </View>

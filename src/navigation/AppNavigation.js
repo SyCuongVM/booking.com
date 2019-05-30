@@ -1,6 +1,7 @@
 import React from 'react';
 import { 
-  createBottomTabNavigator, createAppContainer, 
+  createAppContainer,
+  createBottomTabNavigator, 
   createStackNavigator, createSwitchNavigator,
   StackViewTransitionConfigs
 } from 'react-navigation';
@@ -8,7 +9,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import Splash from '../screens/Splash';
+import Splash from '../screens/common/Splash';
 
 import Home from '../screens/Search/Home';
 import MoreOptions from '../screens/Search/Home/MoreOptions';
@@ -26,6 +27,7 @@ import SignUp from '../screens/SignIn/SignUp';
 import ResetPassword from '../screens/SignIn/ResetPassword';
 import Profile from '../screens/SignIn/Profile';
 import EditProfile from '../screens/SignIn/EditProfile';
+import RecentSearches from '../screens/SignIn/RecentSearches';
 
 import More from '../screens/More/More';
 
@@ -75,7 +77,7 @@ const BookingsStack = createStackNavigator(
 );
 
 const signInScreensWithBottomBarVisible = createStackNavigator(
-  { Auth, SignIn, SignUp, ResetPassword, Profile, EditProfile, Lists },
+  { Auth, SignIn, SignUp, ResetPassword, Profile, EditProfile, Lists, RecentSearches, Bookings },
   { initialRouteName: "Profile", headerMode: 'none' }
 );
 const SignInStack = createStackNavigator(
