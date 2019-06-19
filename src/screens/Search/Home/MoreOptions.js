@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import Counter from '../../../components/common/Counter';
+
 const { width } = Dimensions.get('window');
 class MoreOptions extends Component {
   render() {
@@ -26,17 +28,7 @@ class MoreOptions extends Component {
                   <Text style={{fontSize: 14, fontWeight: '400'}}>Rooms</Text>
                 </View>
                 <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-                  <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                    <View style={{width: 30, height: 30, borderRadius: 2, borderWidth: 0.5, borderColor: '#009FE3', justifyContent: 'center', alignItems: 'center'}}>
-                      <Ionicons name="ios-remove" color='#009FE3' size={30} />
-                    </View>
-                    <View style={{marginHorizontal: 15}}>
-                      <Text style={{fontSize: 16, fontWeight: '400'}}>1</Text>
-                    </View>
-                    <View style={{width: 30, height: 30, borderRadius: 2, borderWidth: 0.5, borderColor: '#009FE3', justifyContent: 'center', alignItems: 'center'}}>
-                      <Ionicons name="ios-add" color='#009FE3' size={30} />
-                    </View>
-                  </View>
+                  <Counter start={1} min={1} max={30} />
                 </View>
               </View>
 
@@ -45,17 +37,7 @@ class MoreOptions extends Component {
                   <Text style={{fontSize: 14, fontWeight: '400'}}>Adults</Text>
                 </View>
                 <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-                  <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                    <View style={{width: 30, height: 30, borderRadius: 2, borderWidth: 0.5, borderColor: '#009FE3', justifyContent: 'center', alignItems: 'center'}}>
-                      <Ionicons name="ios-remove" color='#009FE3' size={30} />
-                    </View>
-                    <View style={{marginHorizontal: 15}}>
-                      <Text style={{fontSize: 16, fontWeight: '400'}}>1</Text>
-                    </View>
-                    <View style={{width: 30, height: 30, borderRadius: 2, borderWidth: 0.5, borderColor: '#009FE3', justifyContent: 'center', alignItems: 'center'}}>
-                      <Ionicons name="ios-add" color='#009FE3' size={30} />
-                    </View>
-                  </View>
+                  <Counter start={2} min={1} max={30} />
                 </View>
               </View>
 
@@ -64,17 +46,7 @@ class MoreOptions extends Component {
                   <Text style={{fontSize: 14, fontWeight: '400'}}>Children</Text>
                 </View>
                 <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-                  <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                    <View style={{width: 30, height: 30, borderRadius: 2, borderWidth: 0.5, borderColor: '#009FE3', justifyContent: 'center', alignItems: 'center'}}>
-                      <Ionicons name="ios-remove" color='#009FE3' size={30} />
-                    </View>
-                    <View style={{marginHorizontal: 15}}>
-                      <Text style={{fontSize: 16, fontWeight: '400'}}>0</Text>
-                    </View>
-                    <View style={{width: 30, height: 30, borderRadius: 2, borderWidth: 0.5, borderColor: '#009FE3', justifyContent: 'center', alignItems: 'center'}}>
-                      <Ionicons name="ios-add" color='#009FE3' size={30} />
-                    </View>
-                  </View>
+                  <Counter start={0} min={0} max={10} />
                 </View>
               </View>
             </View>

@@ -22,8 +22,8 @@ class More extends Component {
             {appMore.map(more => (
               <View key={`more-${more.id}`}>
                 <TouchableOpacity style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginVertical: 10}}>
-                  <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                    <Fontawesome name={more.icon} size={18} color="#13357B" />
+                  <View style={{flex: 0.5, justifyContent: 'center', alignItems: 'center'}}>
+                    <Fontawesome name={more.icon} size={16} color="#009FE3" />
                   </View>
                   <View style={{flex: 4, justifyContent: 'center', alignItems: 'flex-start'}}>
                     <Text style={{fontSize: 14, fontWeight: 'normal'}}>{more.name}</Text>

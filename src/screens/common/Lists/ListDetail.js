@@ -6,6 +6,7 @@ import Property from '../../../components/Property';
 import * as mocks from '../../../resources/mocks';
 
 const { width } = Dimensions.get('window');
+
 class ListDetail extends Component {
   render() {
     const { propertyList, navigation } = this.props;

@@ -34,6 +34,8 @@ import More from '../screens/More/More';
 import Lists from '../screens/common/Lists/Lists';
 import ListDetail from '../screens/common/Lists/ListDetail';
 import CreateList from '../screens/common/Lists/CreateList';
+import MakeList from '../screens/common/Lists/MakeList';
+import QuickList from '../screens/common/Lists/QuickList';
 
 const MODAL_ROUTES = [
   "MoreOptions",
@@ -54,11 +56,11 @@ let dynamicModalTransition = (
 };
 
 const searchScreensWithBottomBarVisible = createStackNavigator(
-  { Home, RecentlyViewed, Lists },
+  { Home, RecentlyViewed, Lists, MakeList },
   { initialRouteName: "Home", headerMode: 'none' }
 );
 const SearchStack = createStackNavigator(
-  { searchScreensWithBottomBarVisible, Search, PropertyList, Property, MoreOptions, CreateList, ListDetail },
+  { searchScreensWithBottomBarVisible, Search, PropertyList, Property, MoreOptions, CreateList, ListDetail, QuickList },
   { headerMode: 'none', transitionConfig: dynamicModalTransition }
 );
 SearchStack.navigationOptions = ({ navigation }) => {
@@ -78,7 +80,7 @@ const BookingsStack = createStackNavigator(
 
 const signInScreensWithBottomBarVisible = createStackNavigator(
   { Auth, SignIn, SignUp, ResetPassword, Profile, EditProfile, Lists, RecentSearches, Bookings },
-  { initialRouteName: "Profile", headerMode: 'none' }
+  { initialRouteName: "Auth", headerMode: 'none' }
 );
 const SignInStack = createStackNavigator(
   { signInScreensWithBottomBarVisible, CreateList },

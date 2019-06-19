@@ -125,7 +125,7 @@ class Home extends Component {
             </View>
 
             <View style={{backgroundColor: '#FFFFFF', paddingHorizontal: 15, paddingVertical: 10, marginBottom: 5}}>
-              <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => navigation.navigate('Lists')}>
+              <TouchableOpacity style={{flexDirection: 'row'}} onPress={user ? () => navigation.navigate('Lists') : () => navigation.navigate('MakeList')}>
                 <View style={{flex: 2}}>
                   <Text style={{fontSize: 14, fontWeight: '400'}}>Lists</Text>
                 </View>
