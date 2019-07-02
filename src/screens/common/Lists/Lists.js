@@ -12,8 +12,9 @@ class Lists extends Component {
       <View style={{flex: 1}}>
         <View style={{backgroundColor: '#13357B', paddingHorizontal: 15, paddingTop: 20, paddingBottom: 10, justifyContent: 'center', alignItems: 'center', height: width - 320}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-            <TouchableOpacity style={{flex: 1, alignItems: 'flex-start'}} onPress={() => navigation.goBack()}>
+            <TouchableOpacity style={{flex: 1, flexDirection: 'row', alignItems: 'flex-start'}} onPress={() => navigation.goBack()}>
               <Ionicons name="ios-arrow-back" color='#FFFFFF' size={25} />
+              <Text style={{color: '#FFFFFF', fontSize: 16, marginLeft: 5}}>Back</Text>  
             </TouchableOpacity>
             <View style={{flex: 5, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
               <Text style={{fontSize: 14, fontWeight: 'bold', color: '#FFFFFF'}}>Lists</Text>
@@ -80,7 +81,7 @@ class Lists extends Component {
             </View>
 
             <View style={{backgroundColor: '#FFFFFF'}}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('CreateList')}>
+              <TouchableOpacity onPress={() => navigation.navigate('CreateList')}>
                 <View style={{paddingHorizontal: 15, paddingVertical: 10, justifyContent: 'center', alignItems: 'flex-start'}}>
                   <Text style={{fontSize: 14, fontWeight: '400', color: '#009FE3'}}>Create a list</Text>
                 </View>

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { View, Text, Dimensions, ScrollView, TextInput, TouchableOpacity, Image } from 'react-native';
 import Fontawesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import Loader from '../../../components/common/Loader';
 import * as mocks from '../../../resources/mocks';
-import { getData } from '../../../util/localStorage';
 
 const { width } = Dimensions.get('window');
 class Home extends Component {
@@ -13,15 +13,18 @@ class Home extends Component {
     super(props);
     this.state = {
       loadingVisible: false,
-      user: {}
+      user: null
     };
     this.handleSearch = this.handleSearch.bind(this);
+    this._bootstrapAsync();
   }
-  componentDidMount() {
-    getData('loggedUser').then((res) => {
-      this.setState({ user: JSON.parse(res)});
-    })
-  }
+  _bootstrapAsync = async () => {
+    const userToken = await AsyncStorage.getItem('loggedUser');
+    
+    if (userToken) {
+      this.setState({ user: JSON.parse(userToken)});
+    }
+  };
   handleSearch() {
     this.setState({ loadingVisible: true });
 
@@ -68,7 +71,7 @@ class Home extends Component {
                     placeholder="Enter destination"
                     placeholderTextColor="black"
                     style={{flex: 1, fontSize: 14, fontWeight: '300', backgroundColor: '#FFFFFF', paddingLeft: 10}}
-                    onFocus={() => this.props.navigation.navigate('Search')}
+                    onFocus={() => navigation.navigate('Search')}
                   />
                 </View>
                 <View style={{flexDirection: 'row', padding: 10, backgroundColor: '#FFFFFF', height: 45, marginBottom: 5, borderRadius: 3, justifyContent: 'center', alignContent: 'center', alignItems: 'center'}}>
@@ -87,7 +90,7 @@ class Home extends Component {
                     placeholder="1 room . 2 adults . 0 children"
                     placeholderTextColor="black"
                     style={{flex: 1, fontSize: 14, fontWeight: '300', backgroundColor: 'white', paddingLeft: 10}}
-                    onFocus={() => this.props.navigation.navigate('MoreOptions')}
+                    onFocus={() => navigation.navigate('MoreOptions')}
                   />
                 </View>
               </View>
@@ -173,7 +176,7 @@ class Home extends Component {
               </View>
             </View>
 
-            <Loader modalVisible={loadingVisible} animationType="fade" />
+            <Loader modalVisible={loadingVisible} animationType="fade" dimensions={140} text="Searching properties in selected location" />
           </View>
         </ScrollView>
       </View>

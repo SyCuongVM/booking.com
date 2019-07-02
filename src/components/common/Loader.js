@@ -4,15 +4,17 @@ import { View, Text, StyleSheet,  Modal, ActivityIndicator, Dimensions } from 'r
 const { width, height } = Dimensions.get('window');
 class Loader extends Component {
   render() {
-    const { animationType, modalVisible } = this.props;
+    const { animationType, modalVisible, dimensions, text } = this.props;
+    const left = width/2 - (dimensions + 20)/2;
+    const top = height/2 - (dimensions + 20)/2;
 
     return (
       <Modal animationType={animationType} transparent visible={modalVisible}>
         <View style={styles.wrapper}>
-          <View style={styles.loaderContainer}>
-            <ActivityIndicator size='large' style={{marginVertical: 15}} />
+          <View style={[styles.loaderContainer, {width: dimensions, height: dimensions, left: left, top: top}]}>
+            <ActivityIndicator size='large' style={{marginTop: 15}} />
             <Text style={styles.text}>
-              Searching properties in selected location
+              {text}
             </Text>
           </View>
         </View>
@@ -31,13 +33,9 @@ const styles = StyleSheet.create({
     left: 0
   },
   loaderContainer: {
-    width: 140,
-    height: 140,
     borderRadius: 15,
     backgroundColor: 'rgba(0,0,0,0.8)',
     position: 'absolute',
-    left: width/2 - 160/2,
-    top: height/2 - 160/2,
   },
   text: {
     fontSize: 14, 
@@ -45,7 +43,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF', 
     textAlign: 'center', 
     paddingHorizontal: 10, 
-    paddingVertical: 10
+    marginVertical: 10
   }
 });
 export default Loader;

@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import Fontawesome from 'react-native-vector-icons/FontAwesome';
+import AsyncStorage from '@react-native-community/async-storage';
 
-import { getData } from '../../util/localStorage';
+import Loader from '../../components/common/Loader';
 
 const { width } = Dimensions.get('window');
 class Bookings extends Component {
-  state = {
-    user: {}
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null
+    }
+    this._bootstrapAsync();
   }
-  componentDidMount() {
-    getData('loggedUser').then((res) => {
-      this.setState({ user: JSON.parse(res)});
-    })
-  }
+  _bootstrapAsync = async () => {
+    const userToken = await AsyncStorage.getItem('loggedUser');
+    if (userToken) {
+      this.setState({ user: JSON.parse(userToken)});
+    }
+  };
 
   render() {
     const { user } = this.state;
@@ -46,7 +52,7 @@ class Bookings extends Component {
             {user ? (
               <View>
                 <View style={{paddingBottom: 30, justifyContent: 'center', alignItems: 'center', alignContent: 'center'}}>
-                  <Text style={{fontSize: 20, fontWeight: 'bold', paddingBottom: 10}}>Welcome back!</Text>
+                  <Text style={{fontSize: 20, fontWeight: '500', paddingBottom: 10}}>Welcome back!</Text>
                   <Text style={{fontSize: 14, fontWeight: '100', textAlign: 'center'}}>To see your bookings, you might need to import them using your booking reference number and PIN.</Text>
                 </View>
                 <View style={{justifyContent: 'center', alignItems: 'center', alignContent: 'center'}}>
@@ -58,7 +64,7 @@ class Bookings extends Component {
             ) : (
               <View>
                 <View style={{paddingBottom: 30, justifyContent: 'center', alignItems: 'center', alignContent: 'center'}}>
-                  <Text style={{fontSize: 18, fontWeight: 'bold', paddingBottom: 10}}>Welcome back!</Text>
+                  <Text style={{fontSize: 18, fontWeight: '500', paddingBottom: 10}}>Welcome back!</Text>
                   <Text style={{fontSize: 14, fontWeight: '100', textAlign: 'center'}}>To see your bookings, you might need to import them using your booking reference number and PIN or by signing in to your account.</Text>
                 </View>
                 <View style={{justifyContent: 'center', alignItems: 'center', alignContent: 'center'}}>

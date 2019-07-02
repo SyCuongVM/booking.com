@@ -19,7 +19,7 @@ class QuickList extends Component {
             <TouchableOpacity style={{flex: 1, alignItems: 'flex-start'}} onPress={() => navigation.goBack()}>
               <Ionicons name="ios-arrow-back" color='#FFFFFF' size={22} />
             </TouchableOpacity>
-            <View style={{flex: 5, justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{flex: 5, justifyContent: 'center', alignItems: 'center', marginRight: 40}}>
               <Text style={{color: '#FFFFFF', fontSize: 14, fontWeight: 'bold'}}>Quick List</Text>  
             </View>
           </View>

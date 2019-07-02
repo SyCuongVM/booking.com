@@ -83,7 +83,7 @@ Counter.defaultProps = {
   },
 
   touchableColor: "#009FE3",
-  touchableDisabledColor: "#ECECEC",
+  touchableDisabledColor: "#BCCCD4",
 
   minusIcon: null,
   plusIcon: null

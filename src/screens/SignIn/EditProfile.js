@@ -1,28 +1,59 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Dimensions, TouchableOpacity, Switch } from 'react-native';
+import { View, Text, ScrollView, Dimensions, TouchableOpacity, Switch, Alert } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { TextField } from 'react-native-material-textfield';
+import AsyncStorage from '@react-native-community/async-storage';
 
-import { getData, removeData } from '../../util/localStorage';
+import Loader from '../../components/common/Loader';
 
 const { width } = Dimensions.get('window');
 class EditProfile extends Component {
-  state = {
-    user: {},
-    business: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+      business: false
+    }
+
+    this._bootstrapAsync();
   }
-  componentDidMount() {
-    getData('loggedUser').then((res) => {
-      this.setState({ user: JSON.parse(res)});
-    })
+  
+  _bootstrapAsync = async () => {
+    const userToken = await AsyncStorage.getItem('loggedUser');
+    if (userToken) {
+      this.setState({ user: JSON.parse(userToken)});
+    }
+  };
+  logOut = async () => {
+    await AsyncStorage.removeItem('loggedUser');
+    this.props.navigation.navigate('Auth');
   }
   logUserOut = () => {
-    removeData('loggedUser');
-    this.props.navigation.navigate('Auth');
+    Alert.alert(
+      'Are you sure you want to log out?',
+      'Logging out will temporarily hide all your personal data, including bookings. To see these again, just log back in to your account.',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel'
+        },
+        {
+          text: 'Proceed', 
+          onPress: () => {
+            this.logOut();
+          }}
+      ],
+      { cancelable: false }
+    );
   }
 
   render() {
     const { user } = this.state;
+    if (!user) {
+      return (
+        <Loader modalVisible={true} animationType="fade" dimensions={100} text="Loading" />
+      );
+    }
 
     return (
       <View style={{flex: 1}}>

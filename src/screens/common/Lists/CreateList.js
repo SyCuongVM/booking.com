@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Dimensions, TouchableOpacity, Switch } from 'react-native';
+import { View, Text, ScrollView, Dimensions, TouchableOpacity } from 'react-native';
 import { TextField } from 'react-native-material-textfield';
+import { NavigationActions } from 'react-navigation';
 
 const { width } = Dimensions.get('window');
 
 class CreateList extends Component {
   render() {
+    const { navigation } = this.props;
+
     return (
       <View style={{flex: 1}}>
         <View style={{backgroundColor: '#13357B', paddingHorizontal: 15, paddingTop: 20, paddingBottom: 10, justifyContent: 'center', alignItems: 'center', height: width - 320}}>
           <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity style={{flex: 1, alignItems: 'flex-start'}} onPress={() => this.props.navigation.goBack()}>
+            <TouchableOpacity style={{flex: 1, alignItems: 'flex-start'}} onPress={() => navigation.goBack()}>
               <Text style={{fontSize: 16, fontWeight: 'bold', color: '#FFFFFF'}}>Cancel</Text>
             </TouchableOpacity>
             <View style={{flex: 5, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginLeft: -70}}>
@@ -43,7 +46,7 @@ class CreateList extends Component {
             </View>
 
             <View style={{justifyContent: 'center', alignItems: 'center', paddingLeft: 30, paddingRight: 25, paddingTop: 20}}>
-              <TouchableOpacity style={{width: width - 60, height: 35, backgroundColor: '#009FE3', justifyContent: 'center', alignItems: 'center', borderRadius: 3}} onPress={this.handleSearch} >
+              <TouchableOpacity style={{width: width - 60, height: 35, backgroundColor: '#009FE3', justifyContent: 'center', alignItems: 'center', borderRadius: 3}} onPress={() => navigation.goBack()}>
                 <Text style={{fontSize: 16, color: '#FFFFFF'}}>Search</Text>
               </TouchableOpacity>
             </View>

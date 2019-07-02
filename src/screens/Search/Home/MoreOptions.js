@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Counter from '../../../components/common/Counter';
 
 const { width } = Dimensions.get('window');
+
 class MoreOptions extends Component {
   render() {
     return (

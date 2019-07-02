@@ -38,8 +38,8 @@ import MakeList from '../screens/common/Lists/MakeList';
 import QuickList from '../screens/common/Lists/QuickList';
 
 const MODAL_ROUTES = [
+  "CreateList",
   "MoreOptions",
-  "CreateList"
 ];
 let dynamicModalTransition = (
   transitionProps,
@@ -79,8 +79,8 @@ const BookingsStack = createStackNavigator(
 );
 
 const signInScreensWithBottomBarVisible = createStackNavigator(
-  { Auth, SignIn, SignUp, ResetPassword, Profile, EditProfile, Lists, RecentSearches, Bookings },
-  { initialRouteName: "Auth", headerMode: 'none' }
+  { Auth, SignIn, SignUp, ResetPassword, Profile, EditProfile, RecentSearches },
+  { initialRouteName: "Profile", headerMode: 'none' }
 );
 const SignInStack = createStackNavigator(
   { signInScreensWithBottomBarVisible, CreateList },

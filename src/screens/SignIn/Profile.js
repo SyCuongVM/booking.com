@@ -1,22 +1,58 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import { NavigationActions, StackActions } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from '@react-native-community/async-storage';
+
+import Loader from '../../components/common/Loader';
 
 const { width } = Dimensions.get('window');
 
 class Profile extends Component {
-  state = {
-    user: {}
+  constructor() {
+    super();
+    this.state = {
+      user: null
+    }
+
+    this._bootstrapAsync();
   }
-  componentDidMount() {
-    getData('loggedUser').then((res) => {
-      this.setState({ user: JSON.parse(res)});
-    });
+  _bootstrapAsync = async () => {
+    const userToken = await AsyncStorage.getItem('loggedUser');
+    if (userToken) {
+      this.setState({ user: JSON.parse(userToken)});
+    }
+  };
+
+  navigateTrips = () => {
+    this.props.navigation.dispatch(
+      NavigationActions.navigate({
+        routeName: 'MoreStack',
+        action: NavigationActions.navigate({
+          routeName: 'More',
+        })
+      })
+    )
+  }
+  navigateLists = () => {
+    this.props.navigation.dispatch(
+      NavigationActions.navigate({
+        routeName: 'searchScreensWithBottomBarVisible',
+        action: NavigationActions.navigate({
+          routeName: 'Lists',
+        })
+      })
+    )
   }
 
   render() {
     const { user } = this.state;
     const { navigation } = this.props;
+    if (!user) {
+      return (
+        <Loader modalVisible={true} animationType="fade" dimensions={100} text="Loading" />
+      );
+    }
 
     return (
       <View style={{flex: 1}}>
@@ -26,7 +62,7 @@ class Profile extends Component {
               <Text style={{fontSize: 14, fontWeight: 'bold', color: '#FFFFFF'}}>Profile</Text>
             </View>
             <View style={{flex: 1, alignItems: 'flex-end'}}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('EditProfile')}>
+              <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
                 <Text style={{color: 'white', fontSize: 14, fontWeight: '500'}}>Edit</Text>
               </TouchableOpacity>
             </View>
@@ -45,7 +81,7 @@ class Profile extends Component {
 
             <View style={{backgroundColor: '#FFFFFF'}}>
 
-              <TouchableOpacity onPress={() => navigation.navigate('Bookings')}> 
+              <TouchableOpacity onPress={this.navigateTrips}> 
                 <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 10, borderBottomWidth: 2, borderBottomColor: '#F7F7F7'}}>
                   <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                     <View style={{marginRight: 10}}>
@@ -73,7 +109,7 @@ class Profile extends Component {
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => navigation.navigate('Lists')}>
+              <TouchableOpacity onPress={this.navigateLists}>
                 <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingVertical: 10, borderBottomWidth: 2, borderBottomColor: '#F7F7F7'}}>
                   <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                     <View style={{marginRight: 10}}>

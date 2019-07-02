@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ImageBackground, Dimensions, TouchableOpacity, TextInput } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-import { storeData } from '../../util/localStorage';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const { width, height } = Dimensions.get('window');
 class SignIn extends Component {
@@ -16,14 +15,15 @@ class SignIn extends Component {
   onChangePassword = (value) => {
     this.setState({ password: value });
   }
-  onLogin = () => {
+  onLogin = async () => {
     const user = {
       firstname: 'Cuong',
       lastname: 'Vu Manh',
       email: this.state.email,
       password: this.state.password
     };
-    storeData('loggedUser', JSON.stringify(user));
+    await AsyncStorage.setItem('loggedUser', JSON.stringify(user));
+    this.props.navigation.navigate('Profile');
   }
 
   render() {
