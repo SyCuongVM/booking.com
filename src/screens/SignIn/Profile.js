@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity, ScrollView, Dimensions } from 'react-nati
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const { width } = Dimensions.get('window');
-import { getData } from '../../util/localStorage';
 
 class Profile extends Component {
   state = {
